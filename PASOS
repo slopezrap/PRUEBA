@@ -1,0 +1,77 @@
+#--------------- USO VERSION PYTHON (CMD) ---------------
+1.- Bajamos la version de python que queremos y la guardamos en la carpeta
+una carpeta, en este caso Python38
+>> C:\Entorno_Desarollo\Python38
+
+2.- Entramos en la carpeta y vemos un ejecutable llamado "python", cambiamos
+el nombre del ejecutable por python3.8 en este
+
+3.- Ejecutamos el python desde el cmd como python3.8
+>> python3.8
+
+#--------------- INSTALACION ANGULAR (CMD) ---------------
+1.- Instalar NodeJS
+>> Te vas a la pagina y te lo descargas
+
+2.- Ver si esta bien instalado NodeJS y ver su version
+>> npm -v
+>> node -v
+
+3.- Instalar angularCLI
+>> npm install -g @angular/cli
+
+4.- Ver si esta bien instalado angularCLI
+>> ng v
+
+#--------------- CREACION PROYECTO ANGULAR (CMD) ---------------
+1.-Creo el workspace
+En mi ruta por ejemplo:
+>> cd C:\Users\slope\OneDrive\Escritorio\EY\ANGULAR-ELECTRON-DJANGO\PROYECTO_WEB\FRONT
+>> ng new WS-ANGULAR --createApplication="false"
+
+2.-Creo la aplicacion
+En mi ruta por ejemplo:
+>> cd C:\Users\slope\OneDrive\Escritorio\EY\ANGULAR-ELECTRON-DJANGO\PROYECTO_WEB\FRONT\WS-ANGULAR
+>> ng generate application APP-PRUEBA
+>> ng generate application APP-PRUEBA-ELECTRON
+
+3.- Lanzo angular
+En mi ruta: C:\Users\slope\OneDrive\Escritorio\EY\ANGULAR-ELECTRON-DJANGO\PROYECTO_WEB\FRONT\WS-ANGULAR
+>> ng serve
+
+#--------------- INSTALACIN DE GIT (CMD) ---------------
+1.- Me bajo git desde su pagina web
+
+2.- Veo si esta bien instalado
+>> git --version
+
+3.- Los comandos para el primer proyecto creado
+NOTA: Puede ser que dentro de los proyectos de Angular, exista una carpeta oculta .git por eso hay que borrarla.
+En mi ruta por ejemplo: C:\Users\slope\OneDrive\Escritorio\EY\ANGULAR-ELECTRON-DJANGO\PROYECTO_WEB\FRONT\WS-ANGULAR
+NOTA2: Creo un fichero llamado .gitignore al mismo nivel que esta la carpeta de .git
+
+
+Abro bash en la ruta que deseo y escribo los siguiente comandos
+En mi ruta por ejemplo: C:\Users\slope\OneDrive\Escritorio\EY\ANGULAR-ELECTRON-DJANGO
+>> git init #Nota donde hago git init coge desde la carpeta de abajo C:\Users\slope\OneDrive\Escritorio\EY\ANGULAR-ELECTRON-DJANGO\
+>> git add .
+>> git commit -m "first commit"
+>> git branch -M master
+>> git remote add origin https://github.com/slopezrap/PRUEBA_SER.git
+>> git push -u origin master
+
+4.- Actualizar
+>> git add .
+>> git commit -m "nombre commit"
+>> git branch -M master
+>> git push -u origin master
+
+5.- Para limpiar la cache de lo que puedo haber subido sin querer del node_modules que debe aparecer en .gitignore
+>> git rm -r --cached PROYECTO_WEB/ELECTRON/node_modules/
+>> git rm -r --cached PROYECTO_WEB/FRONT/WS-ANGULAR/node_modules/
+
+#--------------- INSTALACIN DE ELECTRON (CMD) ---------------
+1.- Me creo una carpeta con el nombre ELECTRON o lo que me de la gana
+En mi ruta por ejemplo: C:\Users\slope\OneDrive\Escritorio\EY\ANGULAR-ELECTRON-DJANGO\PROYECTO_WEB\ELECTRON
+>> cd C:\Users\slope\OneDrive\Escritorio\EY\ANGULAR-ELECTRON-DJANGO\PROYECTO_WEB\ELECTRON
+>> npm install electron -save-dev

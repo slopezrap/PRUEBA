@@ -1,0 +1,241 @@
+{
+  "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+  "version": 1,
+  "newProjectRoot": "projects",
+  "projects": {
+    "APP-PRUEBA": {
+      "projectType": "application",
+      "schematics": {},
+      "root": "projects/APP-PRUEBA",
+      "sourceRoot": "projects/APP-PRUEBA/src",
+      "prefix": "app",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/APP-PRUEBA",
+            "index": "projects/APP-PRUEBA/src/index.html",
+            "main": "projects/APP-PRUEBA/src/main.ts",
+            "polyfills": "projects/APP-PRUEBA/src/polyfills.ts",
+            "tsConfig": "projects/APP-PRUEBA/tsconfig.app.json",
+            "aot": true,
+            "assets": [
+              "projects/APP-PRUEBA/src/favicon.ico",
+              "projects/APP-PRUEBA/src/assets"
+            ],
+            "styles": [
+              "projects/APP-PRUEBA/src/styles.css"
+            ],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "projects/APP-PRUEBA/src/environments/environment.ts",
+                  "with": "projects/APP-PRUEBA/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb",
+                  "maximumError": "10kb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "APP-PRUEBA:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "APP-PRUEBA:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "APP-PRUEBA:build"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/APP-PRUEBA/src/test.ts",
+            "polyfills": "projects/APP-PRUEBA/src/polyfills.ts",
+            "tsConfig": "projects/APP-PRUEBA/tsconfig.spec.json",
+            "karmaConfig": "projects/APP-PRUEBA/karma.conf.js",
+            "assets": [
+              "projects/APP-PRUEBA/src/favicon.ico",
+              "projects/APP-PRUEBA/src/assets"
+            ],
+            "styles": [
+              "projects/APP-PRUEBA/src/styles.css"
+            ],
+            "scripts": []
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/APP-PRUEBA/tsconfig.app.json",
+              "projects/APP-PRUEBA/tsconfig.spec.json",
+              "projects/APP-PRUEBA/e2e/tsconfig.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        },
+        "e2e": {
+          "builder": "@angular-devkit/build-angular:protractor",
+          "options": {
+            "protractorConfig": "projects/APP-PRUEBA/e2e/protractor.conf.js",
+            "devServerTarget": "APP-PRUEBA:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "APP-PRUEBA:serve:production"
+            }
+          }
+        }
+      }
+    },
+    "APP-PRUEBA-ELECTRON": {
+      "projectType": "application",
+      "schematics": {},
+      "root": "projects/APP-PRUEBA-ELECTRON",
+      "sourceRoot": "projects/APP-PRUEBA-ELECTRON/src",
+      "prefix": "app",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/APP-PRUEBA-ELECTRON",
+            "index": "projects/APP-PRUEBA-ELECTRON/src/index.html",
+            "main": "projects/APP-PRUEBA-ELECTRON/src/main.ts",
+            "polyfills": "projects/APP-PRUEBA-ELECTRON/src/polyfills.ts",
+            "tsConfig": "projects/APP-PRUEBA-ELECTRON/tsconfig.app.json",
+            "aot": true,
+            "assets": [
+              "projects/APP-PRUEBA-ELECTRON/src/favicon.ico",
+              "projects/APP-PRUEBA-ELECTRON/src/assets"
+            ],
+            "styles": [
+              "projects/APP-PRUEBA-ELECTRON/src/styles.css"
+            ],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "projects/APP-PRUEBA-ELECTRON/src/environments/environment.ts",
+                  "with": "projects/APP-PRUEBA-ELECTRON/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb",
+                  "maximumError": "10kb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "APP-PRUEBA-ELECTRON:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "APP-PRUEBA-ELECTRON:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "APP-PRUEBA-ELECTRON:build"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/APP-PRUEBA-ELECTRON/src/test.ts",
+            "polyfills": "projects/APP-PRUEBA-ELECTRON/src/polyfills.ts",
+            "tsConfig": "projects/APP-PRUEBA-ELECTRON/tsconfig.spec.json",
+            "karmaConfig": "projects/APP-PRUEBA-ELECTRON/karma.conf.js",
+            "assets": [
+              "projects/APP-PRUEBA-ELECTRON/src/favicon.ico",
+              "projects/APP-PRUEBA-ELECTRON/src/assets"
+            ],
+            "styles": [
+              "projects/APP-PRUEBA-ELECTRON/src/styles.css"
+            ],
+            "scripts": []
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/APP-PRUEBA-ELECTRON/tsconfig.app.json",
+              "projects/APP-PRUEBA-ELECTRON/tsconfig.spec.json",
+              "projects/APP-PRUEBA-ELECTRON/e2e/tsconfig.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        },
+        "e2e": {
+          "builder": "@angular-devkit/build-angular:protractor",
+          "options": {
+            "protractorConfig": "projects/APP-PRUEBA-ELECTRON/e2e/protractor.conf.js",
+            "devServerTarget": "APP-PRUEBA-ELECTRON:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "APP-PRUEBA-ELECTRON:serve:production"
+            }
+          }
+        }
+      }
+    }},
+  "defaultProject": "APP-PRUEBA"
+}

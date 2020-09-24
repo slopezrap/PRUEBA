@@ -71,7 +71,71 @@ En mi ruta por ejemplo: C:\Users\slope\OneDrive\Escritorio\EY\ANGULAR-ELECTRON-D
 >> git rm -r --cached PROYECTO_WEB/FRONT/WS-ANGULAR/node_modules/
 
 #--------------- INSTALACIN DE ELECTRON (CMD) ---------------
-1.- Me creo una carpeta con el nombre ELECTRON o lo que me de la gana
+1.- Me creo una carpeta con el nombre ELECTRON o lo que me de la gana y ejecuto los siguiente comandos
 En mi ruta por ejemplo: C:\Users\slope\OneDrive\Escritorio\EY\ANGULAR-ELECTRON-DJANGO\PROYECTO_WEB\ELECTRON
 >> cd C:\Users\slope\OneDrive\Escritorio\EY\ANGULAR-ELECTRON-DJANGO\PROYECTO_WEB\ELECTRON
 >> npm install electron -save-dev
+
+2.- Me creo los siguientes ficheros en mi ruta
+En mi ruta por ejemplo: C:\Users\slope\OneDrive\Escritorio\EY\ANGULAR-ELECTRON-DJANGO\PROYECTO_WEB\ELECTRON
+Fichero: main.ts : fichero que crea un gui de electron por como esta configurado
+Fichero: package.json : fichero que se ejecuta al llamar a electron y ejecuta el main.ts
+----------------------------- main.js -----------------------------
+const {app, BrowserWindow} = require('electron')
+const url = require("url");
+const path = require("path");
+
+let mainWindow
+
+function createWindow () {
+  mainWindow = new BrowserWindow({
+    width: 800,
+    height: 600,
+    webPreferences: {
+      nodeIntegration: true
+    }
+  })
+  mainWindow.loadURL(
+    url.format({
+      pathname: "C:/Users/slope/OneDrive/Escritorio/EY/ANGULAR-ELECTRON-DJANGO/PROYECTO_WEB/FRONT/WS-ANGULAR/dist/APP-PRUEBA/index.html",
+      protocol: "file:",
+      slashes: true
+    })
+  );
+  //mainWindow.loadFile("C:/Users/slope/OneDrive/Escritorio/EY/ANGULAR-ELECTRON-DJANGO/PROYECTO_WEB/FRONT/WS-ANGULAR/dist/APP-PRUEBA/index.html");
+  // Open the DevTools.
+  mainWindow.webContents.openDevTools()
+
+  mainWindow.on('closed', function () {
+    mainWindow = null
+  })
+}
+
+app.on('ready', createWindow)
+
+app.on('window-all-closed', function () {
+  if (process.platform !== 'darwin') app.quit()
+})
+
+app.on('activate', function () {
+  if (mainWindow === null) createWindow()
+})
+------------------------------------------------------------------------
+----------------------------- package.json -----------------------------
+{
+  "name": "angular-electron-django",
+  "version": "0.0.0",
+  "main": "main.js",
+  "scripts": {
+    "ng": "ng",
+    "start": "ng serve",
+    "build": "ng build",
+    "test": "ng test",
+    "lint": "ng lint",
+    "e2e": "ng e2e",
+    "start:electron": "cd C:/Users/slope/OneDrive/Escritorio/EY/ANGULAR-ELECTRON-DJANGO/PROYECTO_WEB/FRONT/WS-ANGULAR && ng build --base-href ./ && cd C:/Users/slope/OneDrive/Escritorio/EY/ANGULAR-ELECTRON-DJANGO/PROYECTO_WEB/ELECTRON/ && electron ."
+  }
+}
+------------------------------------------------------------------------
+3.- Para corre esto es_
+>> npm run start:electron

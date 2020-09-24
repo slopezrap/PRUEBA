@@ -1,15 +1,15 @@
-#--------------- USO VERSION PYTHON (CMD) ---------------
+# PASO 0: --------------- USO VERSION PYTHON (CMD) ---------------
 1.- Bajamos la version de python que queremos y la guardamos en la carpeta
 una carpeta, en este caso Python38
 >> C:\Entorno_Desarollo\Python38
 
-2.- Entramos en la carpeta y vemos un ejecutable llamado "python", cambiamos
-el nombre del ejecutable por python3.8 en este
+2.- Entramos en la carpeta y vemos un ejecutable llamado "python", copiamos ese ejecutable
+y luego cambiamos el de la copia por el nombre del ejecutable por python3.8
 
 3.- Ejecutamos el python desde el cmd como python3.8
 >> python3.8
 
-#--------------- INSTALACION ANGULAR (CMD) ---------------
+# PASO 1: --------------- INSTALACION ANGULAR (CMD) ---------------
 1.- Instalar NodeJS
 >> Te vas a la pagina y te lo descargas
 
@@ -23,7 +23,7 @@ el nombre del ejecutable por python3.8 en este
 4.- Ver si esta bien instalado angularCLI
 >> ng v
 
-#--------------- CREACION PROYECTO ANGULAR (CMD) ---------------
+# PASO 2: --------------- CREACION PROYECTO ANGULAR (CMD) ---------------
 1.-Creo el workspace
 En mi ruta por ejemplo:
 >> cd C:\Users\slope\OneDrive\Escritorio\EY\ANGULAR-ELECTRON-DJANGO\PROYECTO_WEB\FRONT
@@ -39,7 +39,7 @@ En mi ruta por ejemplo:
 En mi ruta: C:\Users\slope\OneDrive\Escritorio\EY\ANGULAR-ELECTRON-DJANGO\PROYECTO_WEB\FRONT\WS-ANGULAR
 >> ng serve
 
-#--------------- INSTALACIN DE GIT (CMD) ---------------
+# PASO 3: --------------- INSTALACION DE GIT (CMD) ---------------
 1.- Me bajo git desde su pagina web
 
 2.- Veo si esta bien instalado
@@ -70,7 +70,72 @@ En mi ruta por ejemplo: C:\Users\slope\OneDrive\Escritorio\EY\ANGULAR-ELECTRON-D
 >> git rm -r --cached PROYECTO_WEB/ELECTRON/node_modules/
 >> git rm -r --cached PROYECTO_WEB/FRONT/WS-ANGULAR/node_modules/
 
-#--------------- INSTALACIN DE ELECTRON (CMD) ---------------
+# PASO 4: --------------- INSTALACION DE ENTORNO PYTHON Y DJANGO (CMD) ---------------
+0.- Instalacion de pip y de virtualenv
+Te bajas pip de su pagina
+https://bootstrap.pypa.io/get-pip.py y lo guardas en un fichero get-pip.py
+>> python get-pip.py
+>> pip install virtualenv
+
+1.- Creacion de entorno virtual
+En mi ruta por ejemplo:
+>> cd C:\Users\slope\OneDrive\Escritorio\EY\ANGULAR-ELECTRON-DJANGO\PROYECTO_WEB\BACK
+>> python -m venv env_BACK
+
+2.- Activo el entorno virtual
+>> cd C:\Users\slope\OneDrive\Escritorio\EY\ANGULAR-ELECTRON-DJANGO\PROYECTO_WEB\BACK\env_BACK\Scripts
+>> activate
+
+3.- Instalacion de Django y djangorestframework, con el entorno activado
+>> pip install Django==2.1.8
+>> pip install djangorestframework
+
+4.- Creacion del workspace de django
+>> cd C:\Users\slope\OneDrive\Escritorio\EY\ANGULAR-ELECTRON-DJANGO\PROYECTO_WEB\BACK\
+>> django-admin startproject WS_DJANGO
+
+5.- Creacion de una app de django
+>> cd C:\Users\slope\OneDrive\Escritorio\EY\ANGULAR-ELECTRON-DJANGO\PROYECTO_WEB\BACK\WS_DJANGO
+>> python manage.py startapp APP_PRUEBA_ELECTRON
+
+6.- Hago las migraciones y corro el servidor
+>> cd C:\Users\slope\OneDrive\Escritorio\EY\ANGULAR-ELECTRON-DJANGO\PROYECTO_WEB\BACK\WS_DJANGO
+>> python manage.py migrate
+>> python manage.py makemigrations
+>> python manage.py createsuperuser
+>> python manage.py runserver
+
+# PASO 5: --------------- INSTALACION DE ENTORNO PYINSTALLER (CMD) ---------------
+Pagina donde ver como se hace un ejecutable de django con pyinstaller: https://github.com/pyinstaller/pyinstaller/wiki/Recipe-Executable-From-Django
+
+Con el entorno activado
+>> pip install pyinstaller
+>> cd C:\Users\slope\OneDrive\Escritorio\EY\ANGULAR-ELECTRON-DJANGO\PROYECTO_WEB\BACK\WS_DJANGO
+>> pyinstaller --name=WS_DJANGO C:/Users/slope/OneDrive/Escritorio/EY/ANGULAR-ELECTRON-DJANGO/PROYECTO_WEB/BACK/WS_DJANGO/manage.py
+
+
+NOTA: Si da algun error y se para nos vamos al entorno y vamos a
+env_A_E_D\Lib\site-packages\PyInstaller\utils\hooks\subproc y nos metemos en el fichero django_import_finder.py y cambiamos la varaible "hiddenimports"
+         -------------------------------------------------------------------
+hiddenimports = list("settings.INSTALLED_APPS") + \
+                 list("settings.TEMPLATE_CONTEXT_PROCESSORS") + \
+                 list("settings.TEMPLATE_LOADERS") + \
+                 ["settings.ROOT_URLCONF"]
+         -------------------------------------------------------------------
+por
+         -------------------------------------------------------------------
+hiddenimports = list(getattr(settings, "INSTALLED_APPS", [])) + \
+                 list(getattr(settings, "TEMPLATE_CONTEXT_PROCESSORS", [])) + \
+                 list(getattr(settings, "TEMPLATE_LOADERS", [])) + \
+                 [getattr(settings, "ROOT_URLCONF", "")]
+         -------------------------------------------------------------------
+Para ver que esta bien:
+>> cd C:\Users\slope\OneDrive\Escritorio\EY\ANGULAR-ELECTRON-DJANGO\PROYECTO_WEB\BACK\WS_DJANGO\dist\WS_DJANGO
+    WS_DJANGO.exe runserver localhost:8000
+
+# PASO 6: --------------- INSTALACION DE DJANGO Y ELECTRON (CMD) ---------------
+
+# PASO 7: --------------- INSTALACION DE ELECTRON Y ANGULAR (CMD) ---------------
 1.- Me creo una carpeta con el nombre ELECTRON o lo que me de la gana y ejecuto los siguiente comandos
 En mi ruta por ejemplo: C:\Users\slope\OneDrive\Escritorio\EY\ANGULAR-ELECTRON-DJANGO\PROYECTO_WEB\ELECTRON
 >> cd C:\Users\slope\OneDrive\Escritorio\EY\ANGULAR-ELECTRON-DJANGO\PROYECTO_WEB\ELECTRON
